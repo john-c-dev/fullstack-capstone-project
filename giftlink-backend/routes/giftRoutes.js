@@ -4,28 +4,21 @@ const router = express.Router();
 const connectToDatabase = require('../models/db');
 
 router.get('/', async (req, res) => {
-    console.log('gift routes!')
     try {
-        // Step 1: Connect to MongoDB
-        console.log('Connecting to MongoDB...');
+        // Task 1: Connect to MongoDB and store connection to db constant
         const db = await connectToDatabase();
-        console.log('MongoDB connection established.');
 
-        // Step 2: Retrieve the collection
-        console.log('Fetching "gifts" collection...');
+        // Task 2: use the collection() method to retrieve the gift collection
         const collection = db.collection("gifts");
 
-        // Step 3: Fetch all gifts
-        console.log('Querying all gifts...');
+        // Task 3: Fetch all gifts using the collection.find method. Chain with toArray method to convert to JSON array
         const gifts = await collection.find({}).toArray();
-        console.log(`Fetched ${gifts.length} gifts.`);
 
-        // Step 4: Send response
-        console.log('Sending response with gifts data...');
+        // Task 4: return the gifts using the res.json method
         res.json(gifts);
     } catch (e) {
-        console.error('Error encountered while fetching gifts:', e);
-        res.status(500).send('Error fetching gifts:new',e);
+        console.error('Error fetching gifts:', e);
+        res.status(500).send('Error fetching gifts');
     }
 });
 
