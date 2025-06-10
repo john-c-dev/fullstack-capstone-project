@@ -3,7 +3,7 @@
     import {urlConfig} from './config';
 
     //Step 1 - Task 2
-    import { useAppContext } from '../../context/AuthContext';
+    import { useAppContext } from './context/AuthContext';
 
     //Step 1 - Task 3
     import { useNavigate } from 'react-router-dom';
