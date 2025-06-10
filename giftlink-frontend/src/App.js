@@ -11,6 +11,7 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar';
 function App() {
   const navigate = useNavigate();
+  console.log(navigate);
   return (
         <>
         <Navbar/>
